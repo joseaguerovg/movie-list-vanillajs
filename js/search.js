@@ -4,18 +4,33 @@ import render from './render.js'
 const $searchForm = document.getElementById('search-form')
 
 const filterByTitle = function(title){
-    const newMovies = movies.filter((movie) => {
+    return movies.filter((movie) => {
         return movie.title.toLowerCase().includes(title.toLowerCase())
     })
+}
 
-    return newMovies
+const findById = function(id){
+    return movies.find((movie) => movie.id === parseInt(id, 10))
+}
+
+function searchMovie(query){
+    if(isNaN(query)){
+        return filterByTitle(query)
+    }
+
+    return [findById(query)]
 }
 
 $searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this)
     const title = formData.get('title')
-    const movies = filterByTitle(title)
-    render(movies)
+    const movies = searchMovie(title)
+
+    if(movies){
+        return render(movies)
+    }
+
+    return alert('No encontramos tu película')
 })
 
