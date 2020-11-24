@@ -25,12 +25,17 @@ $searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this)
     const title = formData.get('title')
-    const movies = searchMovie(title)
+    if(title.trim() != ''){
+        const movies = searchMovie(title)
 
-    if(movies){
-        return render(movies)
+        if(movies.length > 0){
+            return render(movies)
+        }
+
+        return alert('No encontramos tu película')
     }
 
-    return alert('No encontramos tu película')
+    return alert('Debes ingresar algo en el buscador')
+    
 })
 
