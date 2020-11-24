@@ -9,7 +9,7 @@ body {
   
   .header {
     background: #0e3fa9;
-    margin-bottom: 2em;
+    padding: .1em 0;
     text-align: center;
   }
   .header img {
@@ -17,6 +17,10 @@ body {
     position: relative;
     top: 20px;
     filter: drop-shadow(3px 3px 0 #f2a30c);
+  }
+
+  .header h1{
+    color: #fff;
   }
   
   .actions {
