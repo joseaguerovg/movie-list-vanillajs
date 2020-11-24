@@ -20,6 +20,11 @@ function cleanMovieList(){
     document.getElementById('container').innerHTML = '';
 }
 
+export function renderMovieListFromMap(list, map){
+    cleanMovieList()
+    list.forEach(movieId => renderElement(map.get(movieId)))
+}
+
 export default function renderMovieList(list){
     cleanMovieList()
     list.forEach(renderElement)
